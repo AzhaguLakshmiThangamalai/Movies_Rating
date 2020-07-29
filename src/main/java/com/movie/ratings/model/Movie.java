@@ -16,8 +16,6 @@ public class Movie implements Serializable {
     private Integer id;
 
     private String name;
-    @ElementCollection
-    private List<String> journals;
 
     @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -42,14 +40,6 @@ public class Movie implements Serializable {
         this.name = name;
     }
 
-    public List<String> getJournals() {
-        return journals;
-    }
-
-    public void setJournals(List<String> journals) {
-        this.journals = journals;
-    }
-
     public List<Rating> getRatings() {
         return ratings;
     }
@@ -63,7 +53,6 @@ public class Movie implements Serializable {
         return new ToStringBuilder(this)
                 .append("id", id)
                 .append("name", name)
-                .append("journals", journals)
                 .append("ratings", ratings)
                 .toString();
     }
