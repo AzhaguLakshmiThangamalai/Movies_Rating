@@ -2,6 +2,8 @@ package com.movie.ratings.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -18,6 +20,7 @@ public class Movie implements Serializable {
     private List<String> journals;
 
     @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Rating> ratings;
 
     public Movie() {
